@@ -6,64 +6,218 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Luis Aparicio</title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <style>
+        /* ── Design overrides ── */
+        body { font-family: 'Inter', 'Lato', sans-serif; }
+
+        /* Hero */
+        #lead { background: url(images/lead-bg.jpg) center/cover no-repeat; }
+        #lead-overlay {
+            background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(30,64,175,0.80) 100%);
+        }
+        #lead-content h1 {
+            font-size: 4em;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+        }
+        #lead-content h2 {
+            color: #7dd3fc;
+            font-weight: 400;
+            font-size: 1.5em;
+            margin-bottom: 28px;
+        }
+        .hero-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn-rounded-white {
+            padding: 12px 28px;
+            font-size: 0.9em;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            border-radius: 6px;
+        }
+        .btn-outline {
+            display: inline-block;
+            color: #7dd3fc;
+            padding: 12px 28px;
+            border: 2px solid #7dd3fc;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            transition: .4s ease all;
+            text-decoration: none;
+        }
+        .btn-outline:hover { color: #0f172a; background: #7dd3fc; text-decoration: none; }
+
+        /* Nav */
+        header a { color: #1e40af; font-weight: 500; font-size: 0.95em; }
+        header a:hover { color: #1e3a8a; }
+
+        /* Section headings */
+        .heading { font-weight: 700; font-size: 1.75em; color: #1e293b; }
+        .heading:after { background: #1e40af; width: 40px; }
+
+        /* About */
+        #about { padding: 80px 15px; }
+        #about h2 { color: #1e293b; font-size: 1.75em; font-weight: 700; }
+        #about p { color: #475569; font-size: 1.05em; line-height: 1.8; margin: 0; }
+        .about-meta { margin-top: 20px; display: flex; gap: 20px; flex-wrap: wrap; }
+        .about-chip {
+            background: #eff6ff;
+            color: #1e40af;
+            border: 1px solid #bfdbfe;
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        /* Experience */
+        #experience { border-bottom: 1px solid #e2e8f0; background: #f8fafc; }
+        #experience h2 { color: #1e293b; }
+        .vtimeline-content { border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .vtimeline-content h3 { font-size: 1.3em; font-weight: 600; color: #1e293b; }
+        .vtimeline-content h4 { color: #64748b; font-size: 1em; font-weight: 500; margin-bottom: 12px; }
+        .vtimeline-content p { color: #475569; font-size: 0.92em; line-height: 1.6; margin-bottom: 10px; }
+        .vtimeline-content ul { margin: 8px 0 0 0; padding: 0 0 0 18px; }
+        .vtimeline-content ul li { color: #475569; font-size: 0.88em; line-height: 1.6; margin-bottom: 6px; }
+        .vtimeline-content ul li strong { color: #1e293b; }
+        .vtimeline-icon { background: #1e40af; }
+        #experience-timeline:before, #experience-timeline:after { background: #1e40af; }
+        .vtimeline-date { color: #64748b; font-size: 0.88em; }
+
+        /* Education */
+        #education { background: #fff; }
+        #education h2 { color: #1e293b; }
+        .education-block { border: 1px solid #e2e8f0; border-radius: 8px; }
+        .education-block h3 { font-weight: 600; color: #1e293b; }
+        .education-block h4 { color: #64748b; font-weight: 500; }
+        .education-block span { color: #64748b; }
+        .education-block p { color: #475569; }
+
+        /* Projects */
+        #projects { background: #f8fafc; }
+        #projects h2 { color: #1e293b; }
+        .project { border-radius: 10px; border: 1px solid #e2e8f0; overflow: hidden; }
+        .project-info h3 { font-weight: 600; color: #1e293b; font-size: 1.2em; }
+        .project-info p { color: #475569; font-size: 0.88em; }
+        .project-info a {
+            display: inline-block;
+            background: #1e40af;
+            color: #fff;
+            padding: 7px 18px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .project-info a:hover { background: #1e3a8a; color: #fff; text-decoration: none; }
+        .project-tag {
+            display: inline-block;
+            background: #eff6ff;
+            color: #1e40af;
+            border: 1px solid #bfdbfe;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 0.78em;
+            font-weight: 500;
+            margin: 0 3px 5px 0;
+        }
+        .project-tags { margin-bottom: 10px; }
+
+        /* Skills */
+        #skills { background: #fff; }
+        #skills h2 { color: #1e293b; }
+        .skills-grid { max-width: 860px; margin: 0 auto; text-align: left; }
+        .skills-category { margin-bottom: 30px; }
+        .skills-category h4 {
+            font-size: 0.8em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+        #skills ul { max-width: none; }
+        #skills li {
+            background: #f1f5f9;
+            color: #1e293b;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: 500;
+            padding: 6px 14px;
+            margin: 5px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+        #skills li:hover { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
+
+        /* WIP badge */
+        .wip-badge {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fcd34d;
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-size: 0.55em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+
+        /* Footer */
+        footer { background: #0f172a; padding: 35px 0; }
+        .top span { border-color: #334155; }
+        .top i { color: #64748b; }
+        .social a { color: #64748b; }
+        .social a:hover { color: #7dd3fc; }
+    </style>
 </head>
 
 <body>
     <div id="mobile-menu-open" class="shadow-large">
         <i class="fa fa-bars" aria-hidden="true"></i>
     </div>
-    <!-- End #mobile-menu-toggle -->
     <header>
         <div id="mobile-menu-close">
             <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
         </div>
         <ul id="menu" class="shadow">
-            <li>
-                <a href="#about">About</a>
-            </li>
-            <li>
-                <a href="#experience">Experience</a>
-            </li>
-            <li>
-                <a href="#education">Education</a>
-            </li>
-            <li>
-                <a href="#projects">Projects</a>
-            </li>
-            <li>
-                <a href="#skills">Skills</a>
-            </li>
-            <li>
-                <a href="#contact">Contact</a>
-            </li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
         </ul>
     </header>
-    <!-- End header -->
 
     <div id="lead">
         <div id="lead-content">
             <h1>Luis Aparicio</h1>
             <h2>Full Stack Software Engineer</h2>
-            <!-- <a href="#" class="btn-rounded-white">Download Resume</a> -->
+            <div class="hero-links">
+                <a href="https://github.com/luis-aparicio" target="_blank" class="btn-outline">
+                    <i class="fa fa-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/luis-aparicio-611a9b1a6/" target="_blank" class="btn-rounded-white">
+                    <i class="fa fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
         </div>
-        <!-- End #lead-content -->
-
         <div id="lead-overlay"></div>
-
         <div id="lead-down">
-            <span>
-                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </span>
+            <span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
         </div>
-        <!-- End #lead-down -->
     </div>
-    <!-- End #lead -->
 
     <div id="about">
         <div class="container">
@@ -73,190 +227,185 @@
                 </div>
                 <div class="col-md-8">
                     <p>
-                        I am from Central Florida with an interest in web development and cybersecurity.
-                        When I am not working with software or hardware, you can find me at the bouldering gym or working on my car.
-                     </p>
+                        Full Stack Software Engineer based in Gainesville, FL with 4+ years of professional experience building production web applications. I specialize in functional programming (Haskell, PureScript, Elm) and modern TypeScript stacks, and I'm passionate about championing developer tooling, AI-assisted workflows, and clean system design.
+                    </p>
+                    <p style="margin-top: 14px;">
+                        Outside of work you'll find me at the bouldering gym or tinkering under the hood of my car.
+                    </p>
+                    <div class="about-meta">
+                        <span class="about-chip"><i class="fa fa-map-marker"></i> Gainesville, FL</span>
+                        <span class="about-chip"><i class="fa fa-envelope"></i> laparicio9831@gmail.com</span>
+                        <span class="about-chip"><i class="fa fa-phone"></i> 321-594-3783</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End #about -->
 
     <div id="experience" class="background-alt">
         <h2 class="heading">Experience</h2>
         <div id="experience-timeline">
 
-	    <div data-date="Jan 2024 - Present">
+            <div data-date="Jan 2024 – Present">
                 <h3>Panoramic Software</h3>
-                <h4>Software Engineer - Full Stack Developer</h4>
-                <p>
-                    Modernizing workflows for agency staff through customized application experiences. (PureScript, Haskell, AWS) 
-                </p>
+                <h4>Software Engineer — Front End Developer &nbsp;·&nbsp; Remote, Gainesville FL</h4>
+                <p>PureScript platform modernizing workflow management for government agency staff.</p>
+                <ul>
+                    <li><strong>High-Volume Delivery:</strong> Delivered 194+ tickets; owned the deployment pipeline and release management, including after-hours support.</li>
+                    <li><strong>Feature Ownership:</strong> Led complex multi-developer epics (Role Permissions, Background Checks, Emails Module, S3 Sync); authored specs &amp; estimates; maintained the Impact API Server and assisted in legacy data migration.</li>
+                    <li><strong>AI &amp; Developer Tooling:</strong> Championed responsible AI integration (Claude, Cursor) to increase team velocity; introduced MR templates, CI pipeline improvements, dev containers, and Make targets to streamline developer workflow.</li>
+                </ul>
             </div>
-            
-            <div data-date="Jun 2021 - Jan 2024">
+
+            <div data-date="Jun 2021 – Jan 2024">
                 <h3>ACI Learning</h3>
-                <h4>Software Engineer - Full Stack Developer</h4>
-                <p>
-                    Training solutions for the leaders in Audit, Cybersecurity, and Information Technology. (Haskell, Elm, AWS, Terraform, C#)
-                </p>
+                <h4>Software Engineer — Full Stack Developer &nbsp;·&nbsp; Remote, Gainesville FL</h4>
+                <p>Cybersecurity, audit, and IT training SaaS for enterprise leaders.</p>
+                <ul>
+                    <li><strong>Full Stack Feature Delivery:</strong> Built on-demand video, assessments, and lab tools using Haskell, Elm, AWS, C#, and JavaScript; delivered SSO/LTI integration, transcript caching, user on-boarding, and Salesforce integration.</li>
+                    <li><strong>Cloud Migration &amp; Mentoring:</strong> Self-taught AWS to migrate on-prem infrastructure to the cloud, reducing frequent outages to near-zero downtime; trained and mentored new hires on Haskell, Elm, and Terraform.</li>
+                </ul>
             </div>
 
         </div>
     </div>
-    <!-- End #experience -->
 
     <div id="education">
         <h2 class="heading">Education</h2>
         <div class="education-block">
             <h3>University of Florida</h3>
+            <span class="education-date">2021</span>
             <h4>Bachelor of Science in Computer Science</h4>
-            <p>
-                Front End, Back End, Full Stack, UX Design, and Cybersecurity
-            </p>
+            <p>Gainesville, FL &nbsp;·&nbsp; Coursework in Front End, Back End, Full Stack, UX Design, and Cybersecurity.</p>
         </div>
-        <!-- End .education-block -->
-        <!--
-        <div class="education-block">
-            <h3>University of Ottawa</h3>
-            <span class="education-date">Sept 2016 - Sept 2017</span>
-            <h4>Bachelor of Science in Computer Science</h4>
-            <ul>
-                <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
-                <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
-                <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
-            </ul>
-        </div>
-        -->
-        <!-- End .education-block -->
     </div>
-    <!-- End #education -->
 
     <div id="projects" class="background-alt">
         <h2 class="heading">Projects</h2>
         <div class="container">
             <div class="row">
+
+                <div class="project shadow-large no-image">
+                    <div class="project-info">
+                        <h3>Crochet Pattern Designer &amp; Generator <span class="wip-badge">In Progress</span></h3>
+                        <div class="project-tags">
+                            <span class="project-tag">TypeScript</span>
+                            <span class="project-tag">Full Stack</span>
+                            <span class="project-tag">Claude Code</span>
+                        </div>
+                        <p>
+                            Full-stack TypeScript web app for designing and generating crochet patterns. Built with Claude Code as a primary development tool — designed, built, and deployed in under one week.
+                        </p>
+                    </div>
+                </div>
+
                 <div class="project shadow-large">
                     <div class="project-image">
-                        <img src="images/iftin.png" />
+                        <img src="images/nbapic.jpg" alt="SportsRadar Game Tracker" />
                     </div>
-                    <!-- End .project-image -->
+                    <div class="project-info">
+                        <h3>SportsRadar Game Tracker</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">PureScript</span>
+                            <span class="project-tag">SportsRadar API</span>
+                            <span class="project-tag">Real-time</span>
+                        </div>
+                        <p>
+                            PureScript front end application that tracks live sports games and triggers actions based on real-time game state via the SportsRadar API. Capable of sub-second state updates.
+                        </p>
+                        <a href="https://github.com/luis-aparicio" target="_blank">View Project</a>
+                    </div>
+                </div>
+
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/iftin.png" alt="Iftin Academy" />
+                    </div>
                     <div class="project-info">
                         <h3>Iftin Academy E-Learning</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Vue</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
                         <p>
-                            Vue web application that aims to provide coding (Python, Javascript, and more) courses
-                            to students and learners in Somalia and East Africa.
+                            Vue web application providing Python and JavaScript coding courses to students in Somalia and East Africa.
                         </p>
-                        <a href="https://github.com/CIS4914">View Project</a>
+                        <a href="https://github.com/CIS4914" target="_blank">View Project</a>
                     </div>
-                    <!-- End .project-info -->
                 </div>
-                <!-- End .project -->
+
                 <div class="project shadow-large">
                     <div class="project-image">
-                        <img src="images/jit.jpg" />
+                        <img src="images/jit.jpg" alt="Just In Time Career Finder" />
                     </div>
-                    <!-- End .project-image -->
                     <div class="project-info">
                         <h3>Just In Time Career Finder</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Chatbot</span>
+                            <span class="project-tag">Avatar Editor</span>
+                        </div>
                         <p>
-                            A React Web Application that is catered to middle-school/high-school students which helps them find a career based on their interests and favorite subjects. This application implements a chat-bot, login, and avatar customizer where students can also earn rewards for exploring careers. 
+                            React web app with chatbot, login, and avatar editor helping middle/high school students discover careers aligned to their interests and earn rewards for exploration.
                         </p>
-                        <a href="https://github.com/luis-aparicio/Career-Find">View Project</a>
+                        <a href="https://github.com/luis-aparicio/Career-Find" target="_blank">View Project</a>
                     </div>
-                    <!-- End .project-info -->
                 </div>
-                <!-- End .project -->
 
                 <div class="project shadow-large">
                     <div class="project-image">
-                        <img src="images/cardproj.jpg" />
+                        <img src="images/cardproj.jpg" alt="Cardinal Signs Time Tracker" />
                     </div>
-                    <!-- End .project-image -->
                     <div class="project-info">
-                        <h3>Cardinal Signs Interface</h3>
+                        <h3>Cardinal Signs Time Tracker</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Vue</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">MongoDB</span>
+                        </div>
                         <p>
-                            A Vue and Node.js web application built for Cardinal Signs Inc which allows employees to sign in and log their hours of work. The application is capable of keeping track of multiple users and exporting employee reports. The app is deployed using Netlify, MongoDB, and Heroku. 
+                            Vue and Node.js web app for Cardinal Signs Inc. — employees sign in, log hours, and managers export reports. Deployed with Netlify, MongoDB, and Heroku.
                         </p>
-                        <a href="https://github.com/luis-aparicio/csTimeclockV2">View Project</a>
+                        <a href="https://github.com/luis-aparicio/csTimeclockV2" target="_blank">View Project</a>
                     </div>
-                    <!-- End .project-info -->
                 </div>
-                <!-- End .project -->
-            </div>
 
-            <div class="project shadow-large">
-                <div class="project-image">
-                    <img src="images/nbapic.jpg" />
-                </div>
-                <!-- End .project-image -->
-                <div class="project-info">
-                    <h3>NBA Wager Statistics</h3>
-                    <p>
-                        A React web app which uses SQL and an Oracle database to display and calculate various NBA player/team stats and wager demographics. 
-                    </p>
-                    <a href="https://github.com/luis-aparicio/NBA-Wager-Database">View Project</a>
-                </div>
-                <!-- End .project-info -->
             </div>
-            <!-- End .project -->
-        </div>
         </div>
     </div>
-    <!-- End #projects -->
 
     <div id="skills">
         <h2 class="heading">Skills</h2>
         <ul>
-            <li>PureScript</li>
             <li>Haskell</li>
             <li>Elm</li>
-            <li>Terraform</li>
-            <li>AWS</li>
+            <li>PureScript</li>
+            <li>TypeScript</li>
             <li>JavaScript</li>
-            <li>SQL</li>
-            <li>Node.js</li>
-            <li>Java</li>
-            <li>Vue</li>
-            <li>React</li>
             <li>Python</li>
-            <li>C++</li>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>Photoshop</li>
-            <li>Illustrator</li>
+            <li>SQL</li>
+            <li>HTML / CSS</li>
+            <li>Terraform</li>
+            <li>React</li>
+            <li>Node.js</li>
+            <li>Vue</li>
+            <li>AWS</li>
+            <li>Docker</li>
+            <li>Git</li>
+            <li>Claude AI</li>
+            <li>Cursor</li>
+            <li>CI/CD Engineering</li>
+            <li>DevOps</li>
+            <li>AI Agent Orchestration</li>
+            <li>Spec-Driven Dev</li>
+            <li>Mentoring</li>
         </ul>
     </div>
-    <!-- End #skills -->
-
-    <!-- <div id="contact">
-        <h2>Get in Touch</h2>
-        <div id="contact-form">
-            <form method="POST" action="https://formspree.io/laparicio9831@gmail.com">
-                <input type="hidden" name="_subject" value="Contact request from personal website" />
-                <input type="email" name="_replyto" placeholder="Your email" required>
-                <textarea name="message" placeholder="Your message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
-        </div>
-        <!-- End #contact-form -->
-    </div> -->
-    <!-- End #contact -->
 
     <footer>
         <div class="container">
             <div class="row">
-                <!-- <div class="col-sm-5 copyright">
-                    <p>
-                        Copyright &copy; 2024 Luis Aparicio
-                    </p>
-                </div> -->
                 <div class="col-sm-2 top">
                     <span id="to-top">
                         <i class="fa fa-chevron-up" aria-hidden="true"></i>
@@ -270,13 +419,14 @@
                         <li>
                             <a href="https://www.linkedin.com/in/luis-aparicio-611a9b1a6/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                         </li>
-                       
+                        <li>
+                            <a href="mailto:laparicio9831@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- End footer -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/scripts.min.js"></script>
