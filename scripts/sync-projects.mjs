@@ -35,12 +35,24 @@ const IMAGE_EXT = new Set(['.png', '.jpg', '.jpeg', '.gif', '.webp', '.avif', '.
 
 const warn = (repo, msg) => console.warn(`  ! ${repo}: ${msg}`);
 
+const TRANSIENT = /stream error|CANCEL|ECONNRESET|ETIMEDOUT|EOF|timeout|HTTP 50[234]|temporarily/i;
+
+/** Run `gh`, retrying a couple of times on transient network errors (404s and auth errors are not retried). */
 async function gh(args, { binary = false } = {}) {
-  const { stdout } = await run(GH, args, {
-    encoding: binary ? 'buffer' : 'utf8',
-    maxBuffer: 128 * 1024 * 1024,
-  });
-  return stdout;
+  for (let attempt = 1; ; attempt++) {
+    try {
+      const { stdout } = await run(GH, args, {
+        encoding: binary ? 'buffer' : 'utf8',
+        maxBuffer: 128 * 1024 * 1024,
+      });
+      return stdout;
+    } catch (err) {
+      const text = `${err.stderr ?? ''}${err.message}`;
+      if (attempt >= 3 || !TRANSIENT.test(text)) throw err;
+      console.warn(`  ~ transient gh error, retrying (${attempt}/2): ${text.split('\n')[0].slice(0, 100)}`);
+      await new Promise((r) => setTimeout(r, 1500 * attempt));
+    }
+  }
 }
 
 /** Fetch a file's raw bytes from a repo's default branch; null when it doesn't exist. */

@@ -85,6 +85,24 @@ export const config = {
       // media: [{ src: '/images/projects/crochet/1.png', caption: 'Pattern editor' }],
     },
     {
+      name: 'NFL Gacha Minigame',
+      featured: true,
+      order: 4, // right after the synced projects (orders 1-3)
+      description:
+        'A fantasy-football card-collecting game that runs inside Discord. Players spend coins to open packs of NFL player cards across rarity tiers and seasonal editions, build a binder, and set a weekly lineup that scores from real NFL stats. An operator web portal tunes pack odds and checks the live card catalog.',
+      skills: ['Python', 'discord.py', 'FastAPI', 'PostgreSQL', 'Peewee'],
+      media: [
+        { src: '/images/projects/nfl-gacha/cover.jpg', alt: 'NFL Gacha Minigame', caption: 'Opening packs, setting a lineup and browsing the binder in Discord' },
+        { src: '/images/projects/nfl-gacha/pack-open.png', caption: 'Opening a pack: rarity, rank and last-game points, with a lineup upgrade suggestion' },
+        { src: '/images/projects/nfl-gacha/roster.png', caption: 'Weekly lineup scored from final and projected points' },
+        { src: '/images/projects/nfl-gacha/change-starter.png', caption: 'Swapping a starter from the cards you own' },
+        { src: '/images/projects/nfl-gacha/spooky-pack.png', caption: 'A seasonal edition pack with themed art' },
+        { src: '/images/projects/nfl-gacha/binder.png', caption: 'The binder: showcase, rarity counts and a sortable, paged collection' },
+        { src: '/images/projects/nfl-gacha/pack-odds.webp', caption: 'Operator portal: exact pack odds and live rolls compared with the math' },
+        { src: '/images/projects/nfl-gacha/catalog.webp', caption: 'Operator portal: card catalog by position and rarity, with drift from the targets' },
+      ],
+    },
+    {
       name: 'SportsRadar Game Tracker',
       description:
         'PureScript front end application that tracks live sports games and triggers actions based on real-time game state via the SportsRadar API. Capable of sub-second state updates.',
