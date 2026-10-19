@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [master]
+  schedule:
+    - cron: '0 9 * * *' # nightly, picks up changes in project repos
   workflow_dispatch:
 
 permissions:
@@ -24,7 +26,11 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # `npm run build` syncs projects first (prebuild). PORTFOLIO_TOKEN is optional and
+      # needed only for private repos; otherwise the default token reads public repos.
       - run: npm run build
+        env:
+          GH_TOKEN: ${{ secrets.PORTFOLIO_TOKEN || secrets.GITHUB_TOKEN }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

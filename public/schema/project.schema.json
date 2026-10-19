@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://luis-aparicio.github.io/schema/project.schema.json",
+  "title": "Portfolio project manifest (.portfolio/project.yml)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": { "type": "string", "description": "Card title. Defaults to the prettified repo name." },
+    "description": { "type": "string", "description": "One or two sentences. Defaults to the GitHub repo description." },
+    "skills": { "type": "array", "items": { "type": "string" }, "description": "Tech chips. Defaults to the repo topics." },
+    "status": { "type": "string", "description": "Optional badge, e.g. \"In Progress\"." },
+    "featured": { "type": "boolean", "description": "Sorts the project first." },
+    "order": { "type": "number", "description": "Lower sorts first (default 100)." },
+    "hidden": { "type": "boolean", "description": "Keep the topic but skip the project." },
+    "links": {
+      "type": "array",
+      "description": "Extra links. A Source link (public repos) and the repo homepage are added automatically.",
+      "items": {
+        "type": "object",
+        "required": ["label", "url"],
+        "additionalProperties": false,
+        "properties": {
+          "label": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "kind": { "enum": ["github", "live", "video"] }
+        }
+      }
+    },
+    "media": {
+      "type": "array",
+      "description": "Screenshots and demos, in order. The first is the card cover. Paths are relative to .portfolio/.",
+      "items": {
+        "oneOf": [
+          { "type": "string", "description": "Shorthand: just the file path." },
+          {
+            "type": "object",
+            "required": ["file"],
+            "additionalProperties": false,
+            "properties": {
+              "file": { "type": "string", "description": "e.g. media/dashboard.png" },
+              "type": { "enum": ["image", "video"], "description": "Inferred from the extension if omitted." },
+              "poster": { "type": "string", "description": "Required for a video that should be a cover." },
+              "caption": { "type": "string" },
+              "alt": { "type": "string" }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

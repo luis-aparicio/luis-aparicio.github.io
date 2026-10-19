@@ -24,6 +24,9 @@ export interface Project {
   description: string;
   skills: string[];
   status?: string; // e.g. "In Progress"
+  featured?: boolean; // sorts first
+  order?: number; // lower first; default 100
+  repo?: string; // set for projects synced from GitHub
   links?: ProjectLink[];
   media?: Media[];
 }

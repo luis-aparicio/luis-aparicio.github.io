@@ -1,9 +1,10 @@
 ---
-import { config, type Project } from '../config';
+import type { Project } from '../config';
+import { getProjects } from '../lib/projects';
 import SectionHeading from './SectionHeading.astro';
 import Icon from './Icon.astro';
 
-const projects: Project[] = config.projects;
+const projects: Project[] = getProjects();
 
 // Offer filters only for skills shared by 2+ projects; a filter matching one card is noise.
 const counts = new Map<string, number>();

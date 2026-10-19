@@ -7,12 +7,18 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "sync": "node scripts/sync-projects.mjs",
+    "predev": "node scripts/sync-projects.mjs --soft",
+    "prebuild": "node scripts/sync-projects.mjs"
   },
   "license": "MIT",
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^5.18.2",
     "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "yaml": "^2.9.1"
   }
 }
