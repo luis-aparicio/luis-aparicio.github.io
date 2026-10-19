@@ -54,9 +54,9 @@ export interface Education {
 
 export const config = {
   name: 'Luis Aparicio',
-  title: 'Full Stack Software Engineer',
+  title: 'Senior Full Stack Engineer',
   description:
-    'Portfolio of Luis Aparicio, a full stack software engineer specializing in functional programming and modern TypeScript.',
+    'Portfolio of Luis Aparicio, a senior full stack engineer specializing in functional programming and modern TypeScript.',
   accentColor: '#1d4ed8',
   site: 'https://luis-aparicio.github.io',
   social: {
@@ -65,13 +65,13 @@ export const config = {
     github: 'https://github.com/luis-aparicio',
   },
   aboutMe: [
-    "Full Stack Software Engineer based in Gainesville, FL with 4+ years of professional experience building production web applications. I specialize in functional programming (Haskell, PureScript, Elm) and modern TypeScript stacks, and I'm passionate about championing developer tooling, AI-assisted workflows, and clean system design.",
+    "Senior Full Stack Engineer based in Gainesville, FL with 5+ years of professional experience building production web applications. I specialize in functional programming (Haskell, PureScript, Elm) and modern TypeScript stacks, and I'm passionate about championing developer tooling, AI-assisted workflows, and clean system design.",
     "Outside of work you'll find me at the bouldering gym or tinkering under the hood of my car.",
   ],
   location: 'Gainesville, FL',
   skills: [
     'Haskell', 'Elm', 'PureScript', 'TypeScript', 'JavaScript', 'Python', 'SQL', 'HTML / CSS',
-    'Terraform', 'React', 'Node.js', 'Vue', 'AWS', 'Docker', 'Git', 'Claude AI', 'Cursor',
+    'Terraform', 'React', 'Node.js', 'Vue', 'FastAPI', 'PostgreSQL', 'SQLite', 'Supabase', 'three.js', 'AWS', 'Docker', 'Git', 'Claude AI', 'Cursor',
     'CI/CD Engineering', 'DevOps', 'AI Agent Orchestration', 'Spec-Driven Dev', 'Mentoring',
   ],
   // Display order of the projects section, by repo name (synced projects) or project name
@@ -110,13 +110,14 @@ export const config = {
   experience: [
     {
       company: 'Panoramic Software',
-      title: 'Software Engineer — Front End Developer',
+      title: 'Senior Software Engineer — Full Stack',
       location: 'Remote, Gainesville FL',
       dateRange: 'Jan 2024 – Present',
       summary: 'PureScript platform modernizing workflow management for government agency staff.',
       bullets: [
+        { label: 'Product & Technical Leadership', text: 'Shape features from requirements through delivery, partnering with stakeholders on product requirements, designing the UX, and architecting the system, then leading the build end to end.' },
         { label: 'High-Volume Delivery', text: 'Delivered 194+ tickets; owned the deployment pipeline and release management, including after-hours support.' },
-        { label: 'Feature Ownership', text: 'Led complex multi-developer epics (Role Permissions, Background Checks, Emails Module, S3 Sync); authored specs & estimates; maintained the Impact API Server and assisted in legacy data migration.' },
+        { label: 'Feature Ownership', text: 'Led complex, multi-developer epics (Role Permissions, Background Checks, Emails Module, S3 Sync); authored specs and estimates; maintained the Impact API Server and assisted in legacy data migration.' },
         { label: 'AI & Developer Tooling', text: 'Championed responsible AI integration (Claude, Cursor) to increase team velocity; introduced MR templates, CI pipeline improvements, dev containers, and Make targets to streamline developer workflow.' },
       ],
     },
