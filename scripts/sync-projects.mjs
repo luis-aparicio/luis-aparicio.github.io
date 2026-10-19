@@ -146,14 +146,40 @@ async function buildProject(repo, manifest) {
   return { project, files };
 }
 
+/**
+ * Repos owned by OWNER that carry the topic, via the REST API. `gh repo list --topic` goes through
+ * the search API, which does not reliably return private repos to fine-grained tokens; the
+ * repos endpoints list everything the token can access. A user token (PORTFOLIO_TOKEN, or your
+ * own login) uses /user/repos; the Actions GITHUB_TOKEN cannot, so it falls back to public repos.
+ */
+async function listTaggedRepos() {
+  const page = async (endpoint) =>
+    JSON.parse(await gh(['api', '--paginate', '--slurp', `${endpoint}${endpoint.includes('?') ? '&' : '?'}per_page=100`])).flat();
+  let all;
+  let source = 'user/repos';
+  try {
+    all = await page('user/repos?affiliation=owner');
+  } catch {
+    source = `users/${OWNER}/repos (public only)`;
+    all = await page(`users/${OWNER}/repos`);
+  }
+  const owned = all.filter((r) => r.owner?.login?.toLowerCase() === OWNER.toLowerCase());
+  const tagged = owned.filter((r) => !r.archived && (r.topics ?? []).includes(TOPIC));
+  const priv = owned.filter((r) => r.private).length;
+  console.log(`  ${owned.length} repo(s) visible via ${source} (${priv} private); ${tagged.length} tagged "${TOPIC}"`);
+  return tagged.map((r) => ({
+    name: r.name,
+    description: r.description,
+    homepageUrl: r.homepage,
+    url: r.html_url,
+    visibility: r.private ? 'PRIVATE' : 'PUBLIC',
+    repositoryTopics: (r.topics ?? []).map((name) => ({ name })),
+  }));
+}
+
 async function main() {
   console.log(`Syncing projects tagged "${TOPIC}" from ${OWNER}…`);
-  const list = JSON.parse(
-    await gh([
-      'repo', 'list', OWNER, '--topic', TOPIC, '--no-archived', '--limit', '200',
-      '--json', 'name,description,homepageUrl,url,visibility,repositoryTopics',
-    ]),
-  );
+  const list = await listTaggedRepos();
 
   const projects = [];
   const files = [];
