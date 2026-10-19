@@ -4,7 +4,7 @@ on:
   push:
     branches: [master]
   schedule:
-    - cron: '0 9 * * *' # nightly, picks up changes in project repos
+    - cron: '0 9 * * 1' # Mondays 09:00 UTC: picks up project repo changes and surfaces an expired token
   workflow_dispatch:
 
 permissions:

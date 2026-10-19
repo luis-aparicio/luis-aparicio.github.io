@@ -39,7 +39,7 @@ projects.
 
 ## Deploy
 
-`.github/workflows/deploy.yml` builds and deploys on every push to `master`, nightly, and on demand
+`.github/workflows/deploy.yml` builds and deploys on every push to `master`, weekly (Mondays), and on demand
 (`gh workflow run deploy.yml`). The default `GITHUB_TOKEN` can only read **public** repos. To
 include private repos, create a fine-grained token with read-only `Contents` + `Metadata` on them
 and store it as the `PORTFOLIO_TOKEN` secret:
