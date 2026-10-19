@@ -102,38 +102,6 @@ export const config = {
         { src: '/images/projects/nfl-gacha/catalog.webp', caption: 'Operator portal: card catalog by position and rarity, with drift from the targets' },
       ],
     },
-    {
-      name: 'SportsRadar Game Tracker',
-      description:
-        'PureScript front end application that tracks live sports games and triggers actions based on real-time game state via the SportsRadar API. Capable of sub-second state updates.',
-      skills: ['PureScript', 'SportsRadar API', 'Real-time'],
-      links: [{ label: 'Source', url: 'https://github.com/luis-aparicio', kind: 'github' }],
-      media: [{ src: '/images/nbapic.jpg', alt: 'SportsRadar Game Tracker' }],
-    },
-    {
-      name: 'Iftin Academy E-Learning',
-      description:
-        'Vue web application providing Python and JavaScript coding courses to students in Somalia and East Africa.',
-      skills: ['Vue', 'Python', 'JavaScript'],
-      links: [{ label: 'Source', url: 'https://github.com/CIS4914', kind: 'github' }],
-      media: [{ src: '/images/iftin.png', alt: 'Iftin Academy' }],
-    },
-    {
-      name: 'Just In Time Career Finder',
-      description:
-        'React web app with chatbot, login, and avatar editor helping middle/high school students discover careers aligned to their interests and earn rewards for exploration.',
-      skills: ['React', 'Chatbot', 'Avatar Editor'],
-      links: [{ label: 'Source', url: 'https://github.com/luis-aparicio/Career-Find', kind: 'github' }],
-      media: [{ src: '/images/jit.jpg', alt: 'Just In Time Career Finder' }],
-    },
-    {
-      name: 'Cardinal Signs Time Tracker',
-      description:
-        'Vue and Node.js web app for Cardinal Signs Inc. — employees sign in, log hours, and managers export reports. Deployed with Netlify, MongoDB, and Heroku.',
-      skills: ['Vue', 'Node.js', 'MongoDB'],
-      links: [{ label: 'Source', url: 'https://github.com/luis-aparicio/csTimeclockV2', kind: 'github' }],
-      media: [{ src: '/images/cardproj.jpg', alt: 'Cardinal Signs Time Tracker' }],
-    },
   ] as Project[],
   experience: [
     {
