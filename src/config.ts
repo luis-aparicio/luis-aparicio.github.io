@@ -77,9 +77,10 @@ export const config = {
   projects: [
     {
       name: 'Crochet Pattern Designer & Generator',
+      repo: 'pattern-maker', // fallback: replaced by the synced card once the repo syncs
       status: 'In Progress',
       description:
-        'Full-stack TypeScript web app for designing and generating crochet patterns. Built with Claude Code as a primary development tool — designed, built, and deployed in under one week.',
+        'Full-stack TypeScript web app for designing and generating crochet patterns — designed, built, and deployed in under one week.',
       skills: ['TypeScript', 'Full Stack', 'Claude Code'],
       // media: [{ src: '/images/projects/crochet/1.png', caption: 'Pattern editor' }],
     },

@@ -24,14 +24,14 @@ media:                       # paths are relative to .portfolio/; first item is 
 
 Without a manifest the card is built from the repo's description, homepage and topics. Set
 `hidden: true` to keep the topic but skip the project. Media over 25 MB is skipped; keep videos
-short H.264 `.mp4`s. Public repos get an automatic Source link; private repos don't.
+short `.mp4` or `.webm` clips. Public repos get an automatic Source link; private repos don't.
 
 ## How it syncs
 
 `scripts/sync-projects.mjs` (run by `npm run dev` / `npm run build`, or `npm run sync`) lists the
 owner's repos with the topic via `gh`, downloads each manifest and its media, and writes the
 git-ignored `src/data/synced/*.json` and `public/synced/`. `src/lib/projects.ts` merges these with
-the hand-written projects in `src/config.ts`.
+the hand-written projects in `src/config.ts`. A hand-written project with `repo: '<name>'` is a fallback that the synced card replaces.
 
 Locally it uses your `gh` login (private repos included). A failed sync warns and keeps the previous
 output; in CI (`CI=true`) it fails the build instead, so the deployed site never silently loses
