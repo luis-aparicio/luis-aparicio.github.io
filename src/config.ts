@@ -74,6 +74,10 @@ export const config = {
     'Terraform', 'React', 'Node.js', 'Vue', 'AWS', 'Docker', 'Git', 'Claude AI', 'Cursor',
     'CI/CD Engineering', 'DevOps', 'AI Agent Orchestration', 'Spec-Driven Dev', 'Mentoring',
   ],
+  // Display order of the projects section, by repo name (synced projects) or project name
+  // (hand-written ones). Listed projects come first in this order and override the `order` in a
+  // repo's manifest; anything not listed follows, sorted by featured then `order`.
+  projectOrder: ['pattern-maker', 'chore-tracker', 'NFL Gacha Minigame', 'recipe-timing-wedge'],
   projects: [
     {
       name: 'Crochet Pattern Designer & Generator',

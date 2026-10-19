@@ -31,7 +31,7 @@ short `.mp4` or `.webm` clips. Public repos get an automatic Source link; privat
 `scripts/sync-projects.mjs` (run by `npm run dev` / `npm run build`, or `npm run sync`) lists the
 owner's repos with the topic via `gh`, downloads each manifest and its media, and writes the
 git-ignored `src/data/synced/*.json` and `public/synced/`. `src/lib/projects.ts` merges these with
-the hand-written projects in `src/config.ts`. A hand-written project with `repo: '<name>'` is a fallback that the synced card replaces.
+the hand-written projects in `src/config.ts`. A hand-written project with `repo: '<name>'` is a fallback that the synced card replaces. `projectOrder` in `src/config.ts` sets the display order by repo name (or project name for hand-written ones) and overrides a manifest's `order`.
 
 Locally it uses your `gh` login (private repos included). A failed sync warns and keeps the previous
 output; in CI (`CI=true`) it fails the build instead, so the deployed site never silently loses
