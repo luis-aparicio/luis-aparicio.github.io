@@ -1,0 +1,15 @@
+---
+import { config } from '../config';
+import Icon from './Icon.astro';
+---
+
+<footer class="bg-gray-900 text-gray-400">
+  <div class="max-w-6xl mx-auto px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-sm">© {new Date().getFullYear()} {config.name}</p>
+    <div class="flex gap-5">
+      <a href={`mailto:${config.social.email}`} aria-label="Email" class="hover:text-white transition-colors"><Icon name="mail" /></a>
+      <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="hover:text-white transition-colors"><Icon name="linkedin" /></a>
+      <a href={config.social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="hover:text-white transition-colors"><Icon name="github" /></a>
+    </div>
+  </div>
+</footer>

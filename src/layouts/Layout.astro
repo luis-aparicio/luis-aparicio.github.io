@@ -1,0 +1,26 @@
+---
+import '../styles/global.css';
+import { config } from '../config';
+---
+
+<!doctype html>
+<html lang="en" style={`--accent: ${config.accentColor}`}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{config.name} — {config.title}</title>
+    <meta name="description" content={config.description} />
+    <meta property="og:title" content={`${config.name} — ${config.title}`} />
+    <meta property="og:description" content={config.description} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,18 @@
+---
+import { config } from '../config';
+import SectionHeading from './SectionHeading.astro';
+import Icon from './Icon.astro';
+---
+
+<section id="about" class="p-8 sm:p-12 md:p-16 lg:p-24">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+    <div class="lg:col-span-4"><SectionHeading title="About Me" /></div>
+    <div class="lg:col-span-8 space-y-5 text-base sm:text-lg text-gray-600 leading-relaxed">
+      {config.aboutMe.map((p) => <p>{p}</p>)}
+      <p class="flex items-center gap-2 text-sm text-gray-500 pt-2">
+        <Icon name="pin" class="w-4 h-4" />
+        {config.location}
+      </p>
+    </div>
+  </div>
+</section>

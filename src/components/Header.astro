@@ -1,0 +1,42 @@
+---
+import { config } from '../config';
+const links = [
+  { href: '#about', label: 'About' },
+  { href: '#projects', label: 'Projects', show: config.projects.length > 0 },
+  { href: '#experience', label: 'Experience', show: config.experience.length > 0 },
+  { href: '#education', label: 'Education', show: config.education.length > 0 },
+  { href: '#skills', label: 'Skills', show: config.skills.length > 0 },
+].filter((l) => l.show !== false);
+---
+
+<header
+  id="header"
+  class="fixed top-0 inset-x-0 z-40 -translate-y-full opacity-0 transition-all duration-300 bg-white/85 backdrop-blur border-b border-gray-200"
+>
+  <nav class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between gap-6">
+    <a href="#top" class="font-bold text-gray-900 whitespace-nowrap">{config.name}</a>
+    <ul class="flex gap-4 sm:gap-6 text-sm overflow-x-auto">
+      {
+        links.map((l) => (
+          <li>
+            <a href={l.href} class="text-gray-600 hover:text-gray-900 transition-colors">
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  // Reveal the sticky header once the hero has scrolled past.
+  const header = document.getElementById('header');
+  const update = () => {
+    const show = window.scrollY > window.innerHeight * 0.6;
+    header?.classList.toggle('-translate-y-full', !show);
+    header?.classList.toggle('opacity-0', !show);
+  };
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+</script>
